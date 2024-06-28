@@ -7,6 +7,8 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 import base64
 from googleapiclient import errors
+import json
+
 
 
 # If modifying these scopes, delete the file token.pickle.
@@ -54,7 +56,8 @@ def search_message(service, user_id, search_string,max_results=13):
             return list_ids
         
     except (errors.HttpError, error):
-        print("An error occured: %s") % error
+        print("An error occured: %s" % error)
+        
 
 
 def get_message(service, user_id, msg_id):
@@ -151,7 +154,6 @@ def get_service():
     return service
 
 
-
 def main():
     service = get_service()
     user_id = 'me'
@@ -163,12 +165,16 @@ def main():
         email_data = get_message(service, user_id, email_id)
         if email_data:
             emails.append(email_data)
-            print(f"Email ID: {email_data['id']}\nSubject: {email_data['subject']}\nSender: {email_data['sender']}\nBody: {email_data['body']}\n")
     
-    # Optionally save to a file
-    with open('emails.txt', 'w') as f:
-        for email in emails:
-            f.write(f"Email ID: {email['id']}\nSubject: {email['subject']}\nSender: {email['sender']}\nBody: {email['body']}\n\n")
+    inputs = []
+    for email in emails:
+        full_email = f"Email ID: {email['id']} Subject: {email['subject']} Sender: {email['sender']} Body: {email['body']}"
+        inputs.append(full_email)
+    
+    with open('inputs.json', 'w') as json_file:
+        json.dump(inputs, json_file, indent=4)
+
+    print(f"Emails have been converted to inputs.json")
 
 if __name__ == '__main__':
     main()
