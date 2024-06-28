@@ -1,46 +1,77 @@
-# Getting Started with Create React App
+# Job Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+Job Tracker is a tool designed to help manage and classify job application emails. It uses Cohere's text classification API to categorize emails into different classes such as "Application Received", "Rejected", "Interciew" and "Not applicable" for unrelated emails.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Email Retrieval**: Uses the Gmail API to search and retrieve job application emails from you email.
+- **Text Classification**: Classifies emails using Cohere's classification API.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Setup
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+- Python 3.6 or higher
+- pip (Python package installer)
+- Google Cloud account for Gmail API
+- Cohere API account
+- Git
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation
 
-### `npm run build`
+1. **Clone the Repository**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    ```sh
+    git clone https://github.com/norachams/JobTracker.git
+    cd JobTracker
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Set Up Virtual Environment**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    ```sh
+    python3 -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
 
-### `npm run eject`
+3. **Install Dependencies**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    ```sh
+    pip install -r requirements.txt
+    ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Set Up Environment Variables**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    Create a `.env` file in the root directory and add your API keys:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    ```plaintext
+    COHERE_API_KEY=your-cohere-api-key
+    GMAIL_CLIENT_ID=your-gmail-client-id
+    GMAIL_CLIENT_SECRET=your-gmail-client-secret
+    ```
 
-## Learn More
+5. **Set Up Gmail API**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    Follow the [Gmail API Python Quickstart](https://developers.google.com/gmail/api/quickstart/python) to enable the API and obtain `credentials.json`. Place this file in the root directory.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Usage
+
+1. **Run Email Retrieval and Classification**
+
+    ```sh
+    python get_messages.py
+    python Classify_cohere.py
+    ```
+
+2. **Check the Cleaned Classifications**
+
+    After running the classification script, check the `cleaned_classifications.json` file for results.
+
+## Currently Working on
+
+1. **Enhance Classification Model**: Improve the accuracy of the classification by fine-tuning the model with more labeled examples.
+2. **Add More Email Providers**: Extend support to other email providers like Outlook and Yahoo Mail.
+3. **GUI Development**: Develop a user-friendly graphical interface for easier interaction using React and Typescript.
+4. **Automated Updates**: Implement a cron job to automatically retrieve and classify new emails on a regular basis.
+5. **Data Visualization**: Add features to visualize the classification data for better insights.
