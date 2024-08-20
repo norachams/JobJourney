@@ -6,44 +6,66 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+def classify_emails(emails):
+    # Load examples from JSON file
+    with open('backend/examples.json', 'r') as f:
+        examples_data = json.load(f)
+    examples = [ClassifyExample(text=example['text'], label=example['label']) for example in examples_data]
 
-# Load examples from JSON file
-with open('backend/examples.json', 'r') as f:
-    examples_data = json.load(f)
-examples = [ClassifyExample(text=example['text'], label=example['label']) for example in examples_data]
+    # Load inputs from JSON file
+    with open('backend/inputs.json', 'r') as f:
+        inputs = json.load(f)
 
-# Load inputs from JSON file
-with open('backend/inputs.json', 'r') as f:
-    inputs = json.load(f)
+    # Initialize Cohere client
+    COHERE_API_KEY = os.getenv('COHERE_API_KEY')
+    co = cohere.Client(COHERE_API_KEY)
 
-# Initialize Cohere client
-COHERE_API_KEY = os.getenv('COHERE_API_KEY')
-co = cohere.Client(COHERE_API_KEY)
+    try:
+        # Classify the inputs
+        response = co.classify(
+            model='embed-english-v2.0',
+            inputs=inputs,
+            examples=examples
+        )
+        print("Classification request successful. Processing response...")
+        
+        cleaned_output = []
+        for i, classification in enumerate(response.classifications):
+            input_text = classification.input
+            email_id = input_text.split(' ')[2]  # Extract the email ID
+            subject = input_text.split('Subject: ')[1].split(' Sender: ')[0]  # Extract the subject
+            prediction = classification.prediction
+            
+            email_body = inputs[i]  # Use the actual email body for the generate prompt
+            generate_response = co.generate(
+                model='command',
+                prompt=f'Only extract the compnay name from the email, dont write anything extra and dont ask any questions only company name:\n\n{email_body}',
+                max_tokens=40,
+                temperature=0.4,
+                k=0,
+                stop_sequences=[],
+                return_likelihoods='NONE'
+            )
+            
+            company_name = generate_response.generations[0].text.strip()
+            # Add to cleaned output with the company name
+            cleaned_output.append({
+                'email_id': email_id,
+                'subject': subject,
+                'classification': prediction,
+                'company_name': company_name  # Include company name in the output
+            })
 
+        # Save the cleaned output to a JSON file (optional)
+        with open('backend/cleaned_classifications.json', 'w') as f:
+            json.dump(cleaned_output, f, indent=4)
+        
+        print(cleaned_output)
+        return cleaned_output
 
-# Classify the inputs
-response = co.classify(
-    model='embed-english-v2.0',
-    inputs=inputs,
-    examples=examples
-)
+    except Exception as e:
+        print(f"Error during classification: {e}")
+        return []
 
-# Extract and print email ID and classification
-cleaned_output = []
-for classification in response.classifications:
-    input_text = classification.input
-    email_id = input_text.split(' ')[2]  # Extract the email ID
-    subject = input_text.split('Subject: ')[1].split(' Sender: ')[0]  # Extract the subject
-    prediction = classification.prediction
-    cleaned_output.append({'email_id': email_id, 'subject': subject, 'classification': prediction})
-
-# Print the cleaned output
-print('Cleaned classifications:')
-for item in cleaned_output:
-    print(f"Email ID: {item['email_id']}, Subject: {item['subject']}, Classification: {item['classification']}")
-
-# Optionally, save the cleaned output to a JSON file
-with open('backend/cleaned_classifications.json', 'w') as f:
-    json.dump(cleaned_output, f, indent=4)
-# Print the classifications
-#print('The confidence levels of the labels are:{}'.format(response.classifications))
+if __name__ == '__main__':
+    classify_emails([])  # Replace with your actual email list or logic to load emails

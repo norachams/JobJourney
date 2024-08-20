@@ -60,7 +60,7 @@ def search_message(service, user_id, search_string,max_results=13):
         
 
 
-def get_message(service, user_id, msg_id):
+def get_messages(service, user_id, msg_id):
     """
     Search the inbox for specific message by ID and return it back as a 
     clean string. String may contain Python escape characters for newline
@@ -158,11 +158,11 @@ def main():
     service = get_service()
     user_id = 'me'
     search_string = 'subject:Thank you'  # Adjust the search string as needed
-    max_results = 13
+    max_results = 20
     email_ids = search_message(service, user_id, search_string, max_results)
     emails = []
     for email_id in email_ids:
-        email_data = get_message(service, user_id, email_id)
+        email_data = get_messages(service, user_id, email_id)
         if email_data:
             emails.append(email_data)
     
@@ -171,9 +171,10 @@ def main():
         full_email = f"Email ID: {email['id']} Subject: {email['subject']} Sender: {email['sender']} Body: {email['body']}"
         inputs.append(full_email)
     
-    with open('inputs.json', 'w') as json_file:
+    with open('backend/inputs.json', 'w') as json_file:
         json.dump(inputs, json_file, indent=4)
 
+    print(emails)
     print(f"Emails have been converted to inputs.json")
 
 if __name__ == '__main__':

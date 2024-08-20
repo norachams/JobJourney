@@ -1,67 +1,122 @@
 [
     {
-        "email_id": "1907716d2c8ea540",
-        "subject": "Thank you for applying to Noah Medical!",
-        "classification": "Application Received"
+        "email_id": "1916daea7898d2f9",
+        "subject": "Thank you, interview with Interac",
+        "classification": "Interview",
+        "company_name": "Interac"
     },
     {
-        "email_id": "19076f9834465ae3",
-        "subject": "Thank you for applying to Clever",
-        "classification": "Application Received"
+        "email_id": "1916dae4d39a4685",
+        "subject": "Thank you, interview invitation with Walton Systems",
+        "classification": "Interview",
+        "company_name": "Walton Systems"
     },
     {
-        "email_id": "1906750d12daefc9",
-        "subject": "Thank you for your application, Nora",
-        "classification": "Application Received"
+        "email_id": "1916dada6e13b1fa",
+        "subject": "Thank you for applying, Interview with InnovateX",
+        "classification": "Interview",
+        "company_name": "InnovateX"
     },
     {
-        "email_id": "190672342994aaf1",
-        "subject": "Thank You For Applying!",
-        "classification": "Application Received"
+        "email_id": "1916d4c6089f2873",
+        "subject": "Nora Thank you for your interest in Tesla",
+        "classification": "Rejected",
+        "company_name": "Tesla"
     },
     {
-        "email_id": "190629aad1a4ddb4",
-        "subject": "Thank you for applying to e2open",
-        "classification": "Application Received"
+        "email_id": "1916423a0acf8144",
+        "subject": "Thank you for applying to Coalition, Inc.!",
+        "classification": "Application Received",
+        "company_name": "Coalition, Inc."
     },
     {
-        "email_id": "1906259aaf27a803",
-        "subject": "Thank you for applying to Disguise Technologies Ltd",
-        "classification": "Application Received"
+        "email_id": "1915fdc246f47fba",
+        "subject": "Thank you for your application to The AI Institute",
+        "classification": "Application Received",
+        "company_name": "The AI Institute"
     },
     {
-        "email_id": "1905b1f15be77ef8",
-        "subject": "Thank You For Your Application - Internships - Software Engineering",
-        "classification": "Rejected"
+        "email_id": "1915fd465213f042",
+        "subject": "Thank you \u2013 we\u2019ve received your Tesla application",
+        "classification": "Rejected",
+        "company_name": "Tesla"
     },
     {
-        "email_id": "19058e33bbc1805d",
-        "subject": "Re: Thank you for your Application to Shopify",
-        "classification": "Application Received"
+        "email_id": "1915f78dd6622bbb",
+        "subject": "Thank You for Applying for a Job at Intel",
+        "classification": "Application Received",
+        "company_name": "Intel"
     },
     {
-        "email_id": "19058d712f00ae54",
-        "subject": "Thank you for your Application to Shopify",
-        "classification": "Application Received"
+        "email_id": "1915f72774fc9642",
+        "subject": "Thank you for applying to Figure",
+        "classification": "Application Received",
+        "company_name": "Figure"
     },
     {
-        "email_id": "19058d70dc2690fa",
-        "subject": "Thank you for your Application to Shopify",
-        "classification": "Application Received"
+        "email_id": "1915f6db29111452",
+        "subject": "Thank You For Applying to DraftKings!",
+        "classification": "Not applicable",
+        "company_name": "DraftKings"
     },
     {
-        "email_id": "190553467048b2ca",
-        "subject": "Thank you for your interest in Algolia",
-        "classification": "Rejected"
+        "email_id": "1915a2b2b57159b1",
+        "subject": "Thank you for applying to Jump Trading!",
+        "classification": "Application Received",
+        "company_name": "Jump Trading"
     },
     {
-        "email_id": "190536292018e5a0",
-        "subject": "Thank you for your application to Moxion Power",
-        "classification": "Application Received"
+        "email_id": "1915a2a3891c538c",
+        "subject": "Thank you for applying to Jump Trading!",
+        "classification": "Application Received",
+        "company_name": "Jump Trading"
     },
     {
-        "email_id": "190534e0dffbdf79",
-        "subject": "Thank you for applying to Noah Medical!",
-        "classification": "Application Received"
+        "email_id": "1915179b603a9026",
+        "subject": "Thank you for your submission - Walton Systems",
+        "classification": "Not applicable",
+        "company_name": "Walton Systems"
+    },
+    {
+        "email_id": "1914fdac8ecb3121",
+        "subject": "Thank you for your application to R025629 Automation Engineering Intern - Photonic Hardware (Co-op) (Fall 2024)",
+        "classification": "Application Received",
+        "company_name": "Ciena"
+    },
+    {
+        "email_id": "1913baff6fb83b0f",
+        "subject": "Thank you for your application to R025442 Embedded Software Developer Co-op (Fall 2024)",
+        "classification": "Application Received",
+        "company_name": "Ciena"
+    },
+    {
+        "email_id": "19136fc253ab14c7",
+        "subject": "Sword Health Application | Thank you!",
+        "classification": "Rejected",
+        "company_name": "Sword Health"
+    },
+    {
+        "email_id": "191361f0736ff10a",
+        "subject": "Thank you for your application to R025553 Software Engineer Intern (Fall 2024)",
+        "classification": "Application Received",
+        "company_name": "Here is the company name extracted from the email:\n\nWorkday \n\nCan I provide more assistance separate the company name from the rest of the email?"
+    },
+    {
+        "email_id": "1913131a576a4ca1",
+        "subject": "Thank you for your application to Aeva, Inc.",
+        "classification": "Application Received",
+        "company_name": "Aeva, Inc."
+    },
+    {
+        "email_id": "1912d93b1bb1bede",
+        "subject": "A special thank you from Boyscott",
+        "classification": "Not applicable",
+        "company_name": "Spotify"
+    },
+    {
+        "email_id": "1912649f858378af",
+        "subject": "Thank you for applying!",
+        "classification": "Application Received",
+        "company_name": "MyWorkDay"
     }
 ]

@@ -1,7 +1,7 @@
 import React from 'react';
 import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
 import { useNavigate } from 'react-router-dom';
-import { auth } from '../firebase'; // Adjust the path as necessary
+import { auth } from '../firebase'; 
 import { signInWithCredential, GoogleAuthProvider } from 'firebase/auth';
 
 const Login: React.FC = () => {
